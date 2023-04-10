@@ -2,13 +2,13 @@
 
 #### Simple Angular logic for a Todo App 🚀
 
-##Installation 🔬
+## Installation 🔬
 
 ##### npm install / yarn install  🎉
 
-#####  run is @ "ng serve" 🎉
+##### run is @ "ng serve" 🎉
 
 
-##About 🤹‍♀️
+## About 🤹‍♀️
 
 typescript / logical templating / scss / reusable and scalable code in mind
