@@ -1,0 +1,170 @@
+<div class="AppUI__todos">
+  <form
+    #form="ngForm"
+    [formGroup]="registerForm"
+    #localForm="ngForm"
+    (ngSubmit)="addTodo()"
+    class="AppUI__todos__form"
+  >
+    <label for="firstName" class="AppUI__todos__label">create a todo </label>
+
+    <textarea
+    type="textarea" 
+    rows="4" cols="50"
+      name="inputTodo"
+      placeholder="Enter Todo...."
+      class="AppUI__todos__input"
+      [(ngModel)]="inputTodo"
+      formControlName="firstName"
+      value="inputTodo"
+      [ngClass]="{
+        'AppUI__utility__is-invalid':
+          submitted && registerForm.controls.firstName.errors
+      }"
+    ></textarea>
+
+    <div
+      *ngIf="
+        (registerForm.controls.firstName.dirty || form.submitted) &&
+        !registerForm.controls.firstName.valid
+      "
+      role="alert"
+    >
+      Please enter username
+    </div>
+
+    <button type="submit" value="add todo" class="AppUI__button__submit">
+      <svg
+        class="AppUI__button__icon"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth="{1.5}"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+      <span class="AppUI__button__copy">add todo</span>
+    </button>
+  </form>
+
+  <div class="AppUI__row">
+    <section>
+      <div class="AppUI__block"><h2 class="AppUI__utility__h2-title">remainting todos</h2></div>
+      <div class="AppUI__grid">
+      <ng-container *ngFor="let todo of todos; let i = index">
+        <ng-container *ngIf="!this.todo.completed">
+          
+            <aside class="AppUI__todos">
+              <div class="AppUI__todos__todo">
+                <div class="AppUI__todos__todo__id">{{ i }}</div>
+                <div class="AppUI__todos__todo__content">
+                  {{ todo.content }}
+                </div>
+
+                <div class="AppUI__row">
+                  <button
+                    class="AppUI__todos__todo__completed"
+                    role="button"
+                    (click)="toggleDone(i)"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="AppUI__todos__todo__completed__icon"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+
+                    <span class="AppUI__todos__todo__completed__copy"
+                      >complete ?</span
+                    >
+                  </button>
+
+                  <button
+                    class="AppUI__todos__todo__delete"
+                    role="button"
+                    (click)="deleteTodo(i)"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="AppUI__todos__todo__delete__icon"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                      />
+                    </svg>
+
+                    <span class="AppUI__todos__todo__delete__copy">delete</span>
+                  </button>
+                </div>
+                <!-- <button type="button" class="AppUI__button--toggle"  (click)="updateColor(i)">change border color to red</button>
+    <button type="button" class="AppUI__button--toggle"  (click)="updateColorGreen(i)">change border color to green</button> -->
+              </div>
+            </aside>
+         
+        </ng-container>
+      </ng-container>
+    </div>
+    </section>
+
+    <section>
+      <div class="AppUI__block"><h2 class="AppUI__utility__h2-title">completed list</h2></div>
+      <div class="AppUI__grid-completed">
+      <ng-container *ngFor="let todo of todos; let i = index">
+        <ng-container *ngIf="this.todo.completed">
+       
+            <aside class="AppUI__todos">
+              <div
+                class="AppUI__todos__todo {{ todo.completed ? 'done' : '' }}"
+              >
+                <div class="AppUI__todos__todo__id">{{ i }}</div>
+                <div class="AppUI__todos__todo__content">
+                  {{ todo.content }}
+                </div>
+                <button
+                  class="AppUI__todos__todo__delete"
+                  role="button"
+                  (click)="deleteTodo(i)"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="AppUI__todos__todo__delete__icon"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </aside>
+        
+        </ng-container>
+      </ng-container>
+    </div>
+    </section>
+  </div>
+</div>

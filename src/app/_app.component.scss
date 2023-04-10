@@ -1,0 +1,7 @@
+@use "../styles/index" as *;
+
+.AppUI__header {
+  &__title {
+    @extend .AppUI__utility__title;
+  }
+}

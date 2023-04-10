@@ -1,0 +1,46 @@
+// theme colors
+$theme--color--A: #264653;
+$theme--color--B: #2a9d8f;
+$theme--color--C: #e9c46a;
+$theme--color--D: #f4a261;
+$theme--color--E: #e76f51;
+$theme--color--copy: #ffffff;
+
+@mixin button-primary($theme--color--E) {
+  background: $theme--color--E;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 0;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  color: $theme--color--copy;
+  cursor: pointer;
+  display: inline-flex; 
+  justify-content: center;
+  line-height: 1;
+  margin: 0;
+  min-height: 3rem;
+  padding: 1rem;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+  &:hover,
+  &:focus {
+    background: darken($theme--color--E, 8%);
+    transition: all 0.3s ease;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  }
+  &:active {
+    background: darken($theme--color--E, 25%);
+    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+    transform: translateY(0);
+  }
+
+  
+}

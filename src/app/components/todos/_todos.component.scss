@@ -1,0 +1,133 @@
+@use "../../../styles/index" as *;
+
+.AppUI__todos {
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center; 
+  &__form {
+    display: flex;
+    align-self: center;
+    flex-flow: column;
+    gap: 1rem;
+    border: 3px solid $theme--color--B;
+    padding: 2rem;
+    max-width: 320px;
+    width: 100%;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  &__input {
+    padding: 1rem;
+  }
+
+  &__label {
+    text-transform: capitalize;
+  }
+
+  &__todo {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    border: 3px solid $theme--color--B;
+    background: $theme--color--copy;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 1.2rem;
+    @media screen and (max-width: 640px) {
+  
+      min-width: 100%;
+
+     }
+
+    &:hover {
+      border: 3px dashed $theme--color--E;
+    }
+
+    &__id {
+      height: 0;
+      font-size: 0;
+    }
+    &__content {
+      background: $theme--color--C;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    &__delete {
+      @include button-primary($theme--color--E);
+      &__copy {
+        @extend .AppUI__button__copy;
+      }
+
+      &__icon {
+        @extend .AppUI__button__icon;
+      }
+    }
+
+    &__completed {
+      @include button-primary($theme--color--B);
+      opacity: 0.6;
+      &:hover{
+ opacity: 1;
+      }
+
+      &__copy {
+        @extend .AppUI__button__copy;
+      }
+
+      &__icon {
+        @extend .AppUI__button__icon;
+      }
+    }
+ 
+  }
+
+  .AppUI__todos__todo__content{
+    min-height: 200px;
+    max-width: 327px;
+     
+  scroll-behavior: auto;
+    width: 100%;
+    word-wrap: break-word;
+  }
+  
+
+  &__todo.done {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    text-decoration: line-through;
+    opacity: 0.5;
+    width: 100%;
+    position: relative;
+    height: 64px;
+    background: $theme--color--C; 
+    width: 200px;
+    overflow: hidden; 
+
+    
+    .AppUI__todos__todo__content {
+      margin-bottom: 0;
+      width: 110px;
+      white-space: nowrap;
+      overflow: hidden; 
+ 
+    }
+    &:hover {
+      opacity: 1;
+      transition: none;
+    }
+
+    .AppUI__todos__todo__delete {
+      position: absolute;
+      right: 0;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.AppUI__todos .done{
+ 
+  align-items:  flex-start!important;
+} 
