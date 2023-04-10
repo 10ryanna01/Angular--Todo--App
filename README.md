@@ -1,4 +1,4 @@
-# Angular--Todo--App 
+# Angular Todo App 
 
 #### Simple Angular logic for a Todo App 🚀
 
