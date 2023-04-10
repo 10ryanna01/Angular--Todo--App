@@ -5,7 +5,7 @@
   width: 100%;
   display: flex;
   flex-flow: column;
-  justify-content: center; 
+  justify-content: center;
   &__form {
     display: flex;
     align-self: center;
@@ -36,10 +36,8 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding: 1.2rem;
     @media screen and (max-width: 640px) {
-  
       min-width: 100%;
-
-     }
+    }
 
     &:hover {
       border: 3px dashed $theme--color--E;
@@ -68,8 +66,8 @@
     &__completed {
       @include button-primary($theme--color--B);
       opacity: 0.6;
-      &:hover{
- opacity: 1;
+      &:hover {
+        opacity: 1;
       }
 
       &__copy {
@@ -80,18 +78,16 @@
         @extend .AppUI__button__icon;
       }
     }
- 
   }
 
-  .AppUI__todos__todo__content{
+  .AppUI__todos__todo__content {
     min-height: 200px;
     max-width: 327px;
-     
-  scroll-behavior: auto;
+
+    scroll-behavior: auto;
     width: 100%;
     word-wrap: break-word;
   }
-  
 
   &__todo.done {
     width: 100%;
@@ -102,17 +98,15 @@
     width: 100%;
     position: relative;
     height: 64px;
-    background: $theme--color--C; 
+    background: $theme--color--C;
     width: 200px;
-    overflow: hidden; 
+    overflow: hidden;
 
-    
     .AppUI__todos__todo__content {
       margin-bottom: 0;
       width: 110px;
       white-space: nowrap;
-      overflow: hidden; 
- 
+      overflow: hidden;
     }
     &:hover {
       opacity: 1;
@@ -126,8 +120,3 @@
     }
   }
 }
-
-.AppUI__todos .done{
- 
-  align-items:  flex-start!important;
-} 
